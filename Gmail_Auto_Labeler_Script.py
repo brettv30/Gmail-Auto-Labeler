@@ -31,7 +31,23 @@ SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 
 
 def load_config(config_path: str) -> Dict:
-    """Load the configuration from the specified JSON file."""
+    """Load the configuration from the specified JSON file.
+
+    This function reads the contents of a JSON configuration file located at the
+    specified `config_path` and returns the parsed configuration as a dictionary.
+    If the file is not found or the JSON content is invalid, the function will log
+    the error and raise the corresponding exception.
+
+    Args:
+        config_path (str): The file path of the JSON configuration file.
+
+    Returns:
+        Dict: The configuration loaded from the JSON file.
+
+    Raises:
+        FileNotFoundError: If the configuration file is not found.
+        json.JSONDecodeError: If there is an error parsing the JSON content.
+    """
     try:
         with open(config_path, "r") as config_file:
             config = json.load(config_file)
