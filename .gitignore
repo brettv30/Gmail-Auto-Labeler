@@ -1,0 +1,11 @@
+# Credentials
+creds/
+
+# Virtual Environment
+.venv/
+
+# Configuration File
+config.json
+
+# Log Folder   
+logs/
