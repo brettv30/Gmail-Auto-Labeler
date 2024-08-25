@@ -1,0 +1,11 @@
+{
+    "SENDER_LABELS": {
+        "news@alphasignal.ai": "AI Newsletters",
+        "decodingml@substack.com": "AI Newsletters",
+        "info@email.dukeenergy.com": "Duke Energy",
+        "venmo@venmo.com": "Venmo"
+    },
+    "DAYS_TO_LOOK_BACK": {
+        "Days": "7"
+    }
+}
