@@ -36,13 +36,8 @@ A script that automatically labels emails in your Gmail inbox based on their sen
 ## General Notes
 - A token.json file will be generated in the `creds` folder. This file is used to store the access token for the user and is reset on a regular cadence. If you run the script and find that you need to authorize this project through Gmail, simply authorize the project on Gmail and the token.json file will be updated.
 - The logs folder contains the logs generated from each run of the script in the event that something wrong happens you can go here to triage any issues.
-- SENDER_LABELS is the json variable that holds the sender emails you want to label and the label you want to apply to all emails received from those senders. 
-
-Ex. If I want to label everything from venmo@venmo.com with the label 'Venmo' then I would set it up in the config like "venmo@venmo.com":"Venmo". 
-
-- DAYS_TO_LOOK_BACK is the number of days you want the script to look back in your inbox for emails to label. 
-
-Ex. If I want to look back at the most recent 30 days, then I would set the value like "Days":"30".
+- SENDER_LABELS is the json variable that holds the sender emails you want to label and the label you want to apply to all emails received from those senders. Ex. If I want to label everything from venmo@venmo.com with the label 'Venmo' then I would set it up in the config like "venmo@venmo.com":"Venmo". 
+- DAYS_TO_LOOK_BACK is the number of days you want the script to look back in your inbox for emails to label. Ex. If I want to look back at the most recent 30 days, then I would set the value like "Days":"30".
 
 ## Potential Improvements
 - Add parallel processing for all emails from a given sender
