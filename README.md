@@ -44,3 +44,9 @@ A script that automatically labels emails in your Gmail inbox based on their sen
 - Add parallel processing for all senders
 - Add functionality to add labels to emails based on the subject line
 - Increase the amount of time before requesting a new access token
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+See [LICENSE](https://github.com/brettv30/Gmail-Auto-Labeler/blob/main/LICENSE)
