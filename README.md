@@ -9,7 +9,7 @@ A script that automatically labels emails in your Gmail inbox based on their sen
 5. Create a file named `Config.json` in the root directory of the project.
 6. Create the folders `creds` and `logs` in the root directory of the project.
 7. Open the `Config.json` file and indicate the sender-label pairs you want to use as well as the number of days you want the script to look back. See `example-config.json` for an example.
-8. Go to the (Google Cloud Console)[https://console.cloud.google.com/welcome]
+8. Go to the [Google Cloud Console](https://console.cloud.google.com/welcome)
 9. Create a new project titled `Gmail-Auto-Labeler`
 10. Enable the Gmail API within the project
 11. Create Oauth 2.0 credentials and download the credentials json file
@@ -43,5 +43,4 @@ A script that automatically labels emails in your Gmail inbox based on their sen
 - Add parallel processing for all emails from a given sender
 - Add parallel processing for all senders
 - Add functionality to add labels to emails based on the subject line
-- Increase the amount of time required to request a new access token
-- 
+- Increase the amount of time before requesting a new access token
