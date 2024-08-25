@@ -31,7 +31,8 @@ SCOPES = ["https://www.googleapis.com/auth/gmail.modify"]
 
 
 def load_config(config_path: str) -> Dict:
-    """Load the configuration from the specified JSON file.
+    """
+    Load the configuration from the specified JSON file.
 
     This function reads the contents of a JSON configuration file located at the
     specified `config_path` and returns the parsed configuration as a dictionary.
@@ -62,7 +63,8 @@ def load_config(config_path: str) -> Dict:
 
 
 def authenticate_gmail() -> Resource:
-    """Authenticate the user with Gmail API and return the service resource.
+    """
+    Authenticate the user with Gmail API and return the service resource.
 
     This function handles the authentication process for the Gmail API. It first
     checks if there are valid credentials stored in the 'token.json' file. If the
@@ -109,7 +111,8 @@ def authenticate_gmail() -> Resource:
 
 
 def get_or_create_label(service: Resource, label_name: str) -> str:
-    """Retrieve a label ID if it exists, or create the label if it doesn't.
+    """
+    Retrieve a label ID if it exists, or create the label if it doesn't.
 
     This function checks if a Gmail label with the given name already exists. If the label
     is found, it returns the label's ID. If the label is not found, it creates a new label
@@ -226,8 +229,8 @@ def main() -> None:
     """
     Entrypoint for the Gmail Auto Labeler script.
 
-    This function reads the sender-label mapping and the number of days to look back from environment variables,
-    authenticates with the Gmail API, and then labels emails from the specified senders with the corresponding labels.
+    This function reads the sender-label mapping and the number of days to look back from the config file,
+    authenticates with the Gmail API, and then labels emails from the specified senders based on the corresponding labels.
     """
     # Load the configuration from the JSON file
     config_path = "config.json"
