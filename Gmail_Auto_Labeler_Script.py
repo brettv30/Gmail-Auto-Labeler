@@ -108,6 +108,50 @@ def authenticate_gmail() -> Resource:
         raise
 
 
+def get_or_create_label(service: Resource, label_name: str) -> str:
+    """Retrieve a label ID if it exists, or create the label if it doesn't.
+
+    This function checks if a Gmail label with the given name already exists. If the label
+    is found, it returns the label's ID. If the label is not found, it creates a new label
+    with the given name and returns the new label's ID.
+
+    Args:
+        service (Resource): The Gmail API service resource.
+        label_name (str): The name of the label to retrieve or create.
+
+    Returns:
+        str: The ID of the retrieved or created label.
+
+    Raises:
+        HttpError: If an error occurs while interacting with the Gmail API.
+    """
+    try:
+        labels = service.users().labels().list(userId="me").execute()
+        label_map = {label["name"]: label["id"] for label in labels["labels"]}
+
+        if label_name in label_map:
+            logging.info(f"Label '{label_name}' already exists.")
+            return label_map[label_name]
+        else:
+            logging.info(f"Label '{label_name}' not found. Creating new label.")
+            label_body = {
+                "labelListVisibility": "labelShow",
+                "messageListVisibility": "show",
+                "name": label_name,
+            }
+            label = (
+                service.users().labels().create(userId="me", body=label_body).execute()
+            )
+            logging.info(f"Label '{label_name}' created successfully.")
+            return label["id"]
+
+    except HttpError as error:
+        logging.error(
+            f"An error occurred while retrieving or creating label '{label_name}': {error}"
+        )
+        raise
+
+
 def label_emails(
     service: Resource, sender_label_map: Dict[str, str], days_to_look_back: int
 ) -> None:
@@ -127,12 +171,8 @@ def label_emails(
         HttpError: If an error occurs while interacting with the Gmail API.
     """
     try:
-        # Get all Gmail labels
-        labels = service.users().labels().list(userId="me").execute()
-        label_map = {label["name"]: label["id"] for label in labels["labels"]}
-
         for sender_email, label_name in sender_label_map.items():
-            label_id: Optional[str] = label_map.get(label_name)
+            label_id = get_or_create_label(service, label_name)
 
             if not label_id:
                 logging.warning(
